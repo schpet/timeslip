@@ -1,0 +1,223 @@
+export const snapshot = {};
+
+snapshot[`renderEntry: snapshot of rendered output 1`] = `
+{
+  client_id: 30,
+  client_name: "Acme Corp",
+  date: "2026-03-16",
+  hours: 2.5,
+  id: 101,
+  is_billable: true,
+  is_locked: false,
+  is_running: false,
+  notes: "Working on tests",
+  project_id: 10,
+  project_name: "Timeslip",
+  rounded_hours: 2.5,
+  task_id: 20,
+  task_name: "Development",
+}
+`;
+
+snapshot[`entry --help: snapshot 1`] = `
+"
+Usage:   timeslip entry
+Version: 0.1.0         
+
+Description:
+
+  Manage time entries
+
+Options:
+
+  -h, --help             - Show this help.                           
+  -a, --account  <name>  - Use a specific stored account             
+  -j, --json             - Output structured JSON instead of tables  
+  -r, --robot            - Output headerless tab-separated values    
+
+Commands:
+
+  add                 - Create a time entry               
+  update  <entry-id>  - Modify an existing time entry     
+  remove  <entry-id>  - Delete a time entry               
+  list                - List time entries (default: today)
+
+"
+`;
+
+snapshot[`entry add --help: snapshot 1`] = `
+"
+Usage:   timeslip entry add --project-id <id> --task-id <id> --date <date>
+Version: 0.1.0                                                            
+
+Description:
+
+  Create a time entry
+
+Options:
+
+  -h, --help              - Show this help.                                        
+  -a, --account  <name>   - Use a specific stored account                          
+  -j, --json              - Output structured JSON instead of tables               
+  -r, --robot             - Output headerless tab-separated values                 
+  --project-id   <id>     - Project ID                                   (required)
+  --task-id      <id>     - Task ID                                      (required)
+  --date         <date>   - Spent date (YYYY-MM-DD)                      (required)
+  --hours        <hours>  - Hours spent (omit to start a running timer)            
+  --description  <text>   - Notes for the entry                                    
+
+"
+`;
+
+snapshot[`entry update --help: snapshot 1`] = `
+"
+Usage:   timeslip entry update <entry-id>
+Version: 0.1.0                           
+
+Description:
+
+  Modify an existing time entry
+
+Options:
+
+  -h, --help                    - Show this help.                           
+  -a, --account        <name>   - Use a specific stored account             
+  -j, --json                    - Output structured JSON instead of tables  
+  -r, --robot                   - Output headerless tab-separated values    
+  --hours              <hours>  - Update hours spent                        
+  --description        <text>   - Update notes                              
+  --clear-description           - Set description to blank                  
+  --date               <date>   - Update spent date (YYYY-MM-DD)            
+  --project-id         <id>     - Update project ID                         
+  --task-id            <id>     - Update task ID                            
+
+"
+`;
+
+snapshot[`entry remove --help: snapshot 1`] = `
+"
+Usage:   timeslip entry remove <entry-id>
+Version: 0.1.0                           
+
+Description:
+
+  Delete a time entry
+
+Options:
+
+  -h, --help             - Show this help.                           
+  -a, --account  <name>  - Use a specific stored account             
+  -j, --json             - Output structured JSON instead of tables  
+  -r, --robot            - Output headerless tab-separated values    
+
+"
+`;
+
+snapshot[`entry add --json: snapshot of JSON output 1`] = `
+{
+  client_id: 30,
+  client_name: "Acme Corp",
+  date: "2026-03-16",
+  hours: 2.5,
+  id: 101,
+  is_billable: true,
+  is_locked: false,
+  is_running: false,
+  notes: "Working on tests",
+  project_id: 10,
+  project_name: "Timeslip",
+  rounded_hours: 2.5,
+  task_id: 20,
+  task_name: "Development",
+}
+`;
+
+snapshot[`entry update --json: snapshot 1`] = `
+{
+  client_id: 30,
+  client_name: "Acme Corp",
+  date: "2026-03-16",
+  hours: 8,
+  id: 101,
+  is_billable: true,
+  is_locked: false,
+  is_running: false,
+  notes: "Working on tests",
+  project_id: 10,
+  project_name: "Timeslip",
+  rounded_hours: 2.5,
+  task_id: 20,
+  task_name: "Development",
+}
+`;
+
+snapshot[`entry remove --json: snapshot 1`] = `
+{
+  entry_id: 101,
+  ok: true,
+}
+`;
+
+snapshot[`entry list --help: snapshot 1`] = `
+"
+Usage:   timeslip entry list
+Version: 0.1.0              
+
+Description:
+
+  List time entries (default: today)
+
+Options:
+
+  -h, --help             - Show this help.                           
+  -a, --account  <name>  - Use a specific stored account             
+  -j, --json             - Output structured JSON instead of tables  
+  -r, --robot            - Output headerless tab-separated values    
+  --today                - Show today's entries (default)            
+  --from         <date>  - Start date (YYYY-MM-DD)                   
+  --to           <date>  - End date (YYYY-MM-DD)                     
+  --all                  - Fetch all entries (no date filter)        
+  --running              - Show only running timers                  
+  --project-id   <id>    - Filter by project ID                      
+  --client-id    <id>    - Filter by client ID                       
+  --limit        <n>     - Maximum entries to return                 
+  --page-size    <n>     - Entries per API page                      
+
+"
+`;
+
+snapshot[`entry list --json: snapshot of list output 1`] = `
+{
+  items: [
+    {
+      client_id: 30,
+      client_name: "Acme Corp",
+      date: "2026-03-16",
+      hours: 2.5,
+      id: 101,
+      is_billable: true,
+      is_locked: false,
+      is_running: false,
+      notes: "Working on tests",
+      project_id: 10,
+      project_name: "Timeslip",
+      rounded_hours: 2.5,
+      task_id: 20,
+      task_name: "Development",
+    },
+  ],
+  pages_fetched: 1,
+  total_entries: 1,
+  truncated: false,
+}
+`;
+
+snapshot[`entry add --robot: snapshot 1`] = `
+"101	2026-03-16	2.5	2.5	Working on tests	false	true	false	10	Timeslip	20	Development	30	Acme Corp
+"
+`;
+
+snapshot[`entry list --robot: snapshot 1`] = `
+"101	2026-03-16	2.5	2.5	Working on tests	false	true	false	10	Timeslip	20	Development	30	Acme Corp
+"
+`;

@@ -1,0 +1,73 @@
+export const snapshot = {};
+
+snapshot[`shared envelope: snapshot with entry-shaped items 1`] = `
+{
+  items: [
+    {
+      client_id: 10,
+      client_name: "Acme Corp",
+      date: "2026-03-17",
+      hours: 2.5,
+      id: 12345,
+      is_billable: true,
+      is_locked: false,
+      is_running: false,
+      notes: "Bug fixes",
+      project_id: 100,
+      project_name: "Timeslip",
+      rounded_hours: 2.5,
+      task_id: 200,
+      task_name: "Development",
+    },
+  ],
+  pages_fetched: 1,
+  total_entries: 1,
+  truncated: false,
+}
+`;
+
+snapshot[`shared envelope: snapshot with project-shaped items 1`] = `
+{
+  items: [
+    {
+      client_id: 10,
+      client_name: "Acme Corp",
+      is_active: true,
+      project_code: "TS",
+      project_id: 100,
+      project_name: "Timeslip",
+      tasks: [
+        {
+          billable: true,
+          task_id: 200,
+          task_name: "Development",
+        },
+      ],
+    },
+  ],
+  pages_fetched: 1,
+  total_entries: 1,
+  truncated: false,
+}
+`;
+
+snapshot[`shared envelope: snapshot with client-shaped items 1`] = `
+{
+  items: [
+    {
+      client_id: 10,
+      client_name: "Acme Corp",
+      projects: [
+        {
+          project_code: "TS",
+          project_id: 100,
+          project_name: "Timeslip",
+        },
+      ],
+    },
+  ],
+  pages_fetched: 1,
+  total_entries: 1,
+  truncated: false,
+}
+`;

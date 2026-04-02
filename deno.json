@@ -1,0 +1,35 @@
+{
+  "$schema": "https://raw.githubusercontent.com/denoland/deno/main/cli/schemas/config-file.v1.json",
+  "name": "@schpet/timeslip",
+  "version": "0.1.0",
+  "exports": "./src/main.ts",
+  "tasks": {
+    "dev": "deno run --allow-all --quiet src/main.ts",
+    "install": "deno install -c ./deno.json --allow-all --quiet -g -f -n timeslip ./src/main.ts",
+    "uninstall": "deno uninstall -g timeslip",
+    "codegen": "deno run --allow-read --allow-write --allow-env scripts/codegen.ts",
+    "check": "deno check src/main.ts",
+    "test": "deno test --allow-all --quiet",
+    "snapshot": "deno test --allow-all -- --update",
+    "test:e2e:foundation": "deno test --allow-all src/cli/root_e2e_test.ts src/e2e_harness_test.ts src/codegen_test.ts src/config/mod_test.ts src/providers/harvest/client_test.ts src/errors/secret_safety_test.ts src/output/table_test.ts src/output/contracts_test.ts src/cli/root_test.ts src/boundary_test.ts src/commands/auth/login_test.ts src/commands/auth/auth_test.ts src/commands/auth/auth_e2e_test.ts src/commands/entry/entry_test.ts src/commands/entry/entry_e2e_test.ts src/contracts_e2e_test.ts",
+    "validate": "deno task check && deno fmt && deno lint"
+  },
+  "imports": {
+    "@cliffy/command": "jsr:@cliffy/command@^1.0.0-rc.8",
+    "@cliffy/testing": "jsr:@cliffy/testing@^1.0.0-rc.8",
+    "@std/assert": "jsr:@std/assert@1",
+    "@std/cli": "jsr:@std/cli@^1.0.12",
+    "@std/fmt": "jsr:@std/fmt@1",
+    "@std/path": "jsr:@std/path@^1.0.8",
+    "@std/testing": "jsr:@std/testing@1",
+    "@std/toml": "jsr:@std/toml@^1.0.2"
+  },
+  "fmt": {
+    "proseWrap": "never",
+    "semiColons": false,
+    "exclude": ["src/providers/harvest/generated/"]
+  },
+  "lint": {
+    "exclude": ["src/providers/harvest/generated/"]
+  }
+}

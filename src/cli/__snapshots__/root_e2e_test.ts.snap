@@ -1,0 +1,71 @@
+export const snapshot = {};
+
+snapshot[`e2e: zero-argument output snapshot 1`] = `
+"timeslip v0.1.0 — Harvest time tracking from the command line
+
+USAGE
+  timeslip [--account <name>] [--json | --robot] <command>
+
+AUTH
+  auth login     Store credentials for a Harvest account
+  auth logout    Remove a stored account
+  auth list      Show configured accounts
+  auth default   Set the default account
+  auth whoami    Verify credentials and print identity
+
+TIME ENTRIES
+  entry add      Create a time entry
+  entry update   Modify an existing entry
+  entry remove   Delete an entry
+  entry list     List entries (default: today)
+
+DISCOVERY
+  project list   List assigned projects and tasks
+  client list    List clients from project assignments
+
+HARVEST LOW-LEVEL
+  harvest api      Send authenticated requests to the Harvest API
+  harvest schema   Print the bundled OpenAPI schema (offline)
+
+GLOBAL FLAGS
+  --account <name>   Use a specific stored account
+  --json             Output structured JSON instead of tables
+  --robot            Output headerless tab-separated values
+  --help             Show help for any command
+  --version          Print version
+
+ENVIRONMENT
+  TIMESLIP_ACCOUNT   Default account (overridden by --account)
+  TIMESLIP_DEBUG=1   Show stack traces and request details
+
+Run \`timeslip <command> --help\` for details on a specific command.
+"
+`;
+
+snapshot[`e2e: --help output snapshot 1`] = `
+"
+Usage:   timeslip
+Version: 0.1.0   
+
+Description:
+
+  Harvest time tracking from the command line.
+
+Options:
+
+  -h, --help             - Show this help.                            
+  -V, --version          - Show the version number for this program.  
+  -a, --account  <name>  - Use a specific stored account              
+  -j, --json             - Output structured JSON instead of tables   
+  -r, --robot            - Output headerless tab-separated values     
+
+Commands:
+
+  auth     - Manage authentication and stored accounts    
+  entry    - Manage time entries                          
+  project  - List and inspect projects                    
+  client   - List and inspect clients                     
+  harvest  - Low-level Harvest API access and schema tools
+
+"
+`;

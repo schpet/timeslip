@@ -1,0 +1,90 @@
+export const snapshot = {};
+
+snapshot[`harvest --help: snapshot 1`] = `
+"
+Usage:   timeslip harvest
+Version: 0.1.0           
+
+Description:
+
+  Low-level Harvest API access and schema tools
+
+Options:
+
+  -h, --help             - Show this help.                           
+  -a, --account  <name>  - Use a specific stored account             
+  -j, --json             - Output structured JSON instead of tables  
+  -r, --robot            - Output headerless tab-separated values    
+
+Commands:
+
+  api     <endpoint>  - Send authenticated requests to the Harvest REST API.
+  schema              - Print the bundled Harvest OpenAPI schema as YAML.   
+
+"
+`;
+
+snapshot[`harvest api --help: snapshot 1`] = `
+"
+Usage:   timeslip harvest api <endpoint>
+Version: 0.1.0                          
+
+Description:
+
+  Send authenticated requests to the Harvest REST API.                        
+                                                                              
+  WARNING: Harvest credentials are scoped to a specific account, not to the   
+  current user. Every data-access endpoint returns account-wide results unless
+  you explicitly filter by user. Always pass \`-F user_id=@me\` (or the         
+  literal numeric user ID) when you need only your own records.               
+                                                                              
+  EXAMPLES                                                                    
+                                                                              
+    timeslip harvest api /users/me                                            
+    timeslip harvest api /time_entries -F user_id=@me -F from=2026-03-17      
+    timeslip harvest api /time_entries -F user_id=@me -F is_running=true      
+    timeslip harvest api /projects --paginate                                 
+    timeslip harvest schema | rg '/time_entries'                              
+
+Options:
+
+  -h, --help                 - Show this help.                                 
+  -a, --account    <name>    - Use a specific stored account                   
+  -j, --json                 - Output structured JSON instead of tables        
+  -r, --robot                - Output headerless tab-separated values          
+  -X, --method     <method>  - HTTP method (default: GET)                      
+  -F, --field      <field>   - Add a typed query/body field (key=value)        
+  -f, --raw-field  <field>   - Add a string-only query/body field (key=value)  
+  -H, --header     <header>  - Add an HTTP header (key:value)                  
+  --input          <file>    - Read request body from a file (- for stdin)     
+  --paginate                 - Fetch all pages and concatenate results         
+  -i, --include              - Include HTTP response headers in output         
+
+"
+`;
+
+snapshot[`harvest schema --help: snapshot 1`] = `
+"
+Usage:   timeslip harvest schema
+Version: 0.1.0                  
+
+Description:
+
+  Print the bundled Harvest OpenAPI schema as YAML.                       
+                                                                          
+  Dumps the full OpenAPI specification bundled with this CLI verbatim to  
+  stdout. This is a local operation — no network calls are made. Pipe into
+  grep, rg, or yq for quick lookups.                                      
+                                                                          
+  The output is the unmodified YAML exactly as bundled at build time. No  
+  filtering, path selection, or format conversion flags are supported.    
+
+Options:
+
+  -h, --help             - Show this help.                           
+  -a, --account  <name>  - Use a specific stored account             
+  -j, --json             - Output structured JSON instead of tables  
+  -r, --robot            - Output headerless tab-separated values    
+
+"
+`;

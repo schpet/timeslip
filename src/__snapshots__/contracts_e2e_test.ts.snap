@@ -1,0 +1,63 @@
+export const snapshot = {};
+
+snapshot[`e2e contract: project list --json snapshot matches frozen envelope 1`] = `
+{
+  items: [
+    {
+      client_id: 10,
+      client_name: "Acme Corp",
+      is_active: true,
+      project_code: "P100",
+      project_id: 100,
+      project_name: "Project 100",
+      tasks: [
+        {
+          billable: true,
+          task_id: 1001,
+          task_name: "Task for P100",
+        },
+      ],
+    },
+  ],
+  pages_fetched: 1,
+  total_entries: 1,
+  truncated: false,
+}
+`;
+
+snapshot[`e2e contract: client list --json snapshot matches frozen envelope 1`] = `
+{
+  items: [
+    {
+      client_id: 10,
+      client_name: "Acme Corp",
+      projects: [
+        {
+          project_code: "P100",
+          project_id: 100,
+          project_name: "Project 100",
+        },
+        {
+          project_code: "P101",
+          project_id: 101,
+          project_name: "Project 101",
+        },
+      ],
+    },
+    {
+      client_id: 20,
+      client_name: "Globex Inc",
+      projects: [
+        {
+          project_code: "P102",
+          project_id: 102,
+          project_name: "Project 102",
+        },
+      ],
+    },
+  ],
+  pages_fetched: 1,
+  total_entries: 2,
+  truncated: false,
+}
+`;

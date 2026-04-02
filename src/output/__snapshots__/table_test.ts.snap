@@ -1,0 +1,27 @@
+export const snapshot = {};
+
+snapshot[`renderTable snapshot: basic two-column table 1`] = `
+[
+  "[90mID  [39m  [90mNAME   [39m",
+  "1     Alpha  ",
+  "2     Bravo  ",
+  "33    Charlie",
+]
+`;
+
+snapshot[`renderTable snapshot: right-aligned numeric column 1`] = `
+[
+  "[90mPROJECT[39m  [90mHOURS [39m",
+  "Website     1.5",
+  "API       12.25",
+  "Docs        0.5",
+]
+`;
+
+snapshot[`renderTable snapshot: column with maxWidth truncation 1`] = `
+[
+  "[90mID [39m  [90mDESCRIPTION    [39m",
+  "1    Short note     ",
+  "2    This is a mu...",
+]
+`;

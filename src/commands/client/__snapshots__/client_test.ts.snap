@@ -1,0 +1,51 @@
+export const snapshot = {};
+
+snapshot[`client --help: snapshot 1`] = `
+"
+Usage:   timeslip client
+Version: 0.1.0          
+
+Description:
+
+  List and inspect clients
+
+Options:
+
+  -h, --help             - Show this help.                           
+  -a, --account  <name>  - Use a specific stored account             
+  -j, --json             - Output structured JSON instead of tables  
+  -r, --robot            - Output headerless tab-separated values    
+
+Commands:
+
+  list  - List clients from project assignments
+
+"
+`;
+
+snapshot[`client list --help: snapshot 1`] = `
+"
+Usage:   timeslip client list
+Version: 0.1.0               
+
+Description:
+
+  List clients from project assignments
+
+Options:
+
+  -h, --help             - Show this help.                           
+  -a, --account  <name>  - Use a specific stored account             
+  -j, --json             - Output structured JSON instead of tables  
+  -r, --robot            - Output headerless tab-separated values    
+  --limit        <n>     - Maximum clients to return                 
+  --page-size    <n>     - Projects per API page                     
+
+"
+`;
+
+snapshot[`client list --robot: snapshot 1`] = `
+"10	Acme Corp	100:Project 100:P100
+20	Globex Inc	101:Project 101:P101
+"
+`;

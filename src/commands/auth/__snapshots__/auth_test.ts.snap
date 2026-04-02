@@ -1,0 +1,63 @@
+export const snapshot = {};
+
+snapshot[`auth --help: snapshot 1`] = `
+"
+Usage:   timeslip auth
+Version: 0.1.0        
+
+Description:
+
+  Manage authentication and stored accounts
+
+Options:
+
+  -h, --help             - Show this help.                           
+  -a, --account  <name>  - Use a specific stored account             
+  -j, --json             - Output structured JSON instead of tables  
+  -r, --robot            - Output headerless tab-separated values    
+
+Commands:
+
+  login            - Store credentials for a Harvest account
+  list             - Show configured accounts               
+  default  <name>  - Set the default account                
+  whoami           - Verify credentials and print identity  
+  logout   <name>  - Remove a stored account                
+
+"
+`;
+
+snapshot[`auth login --help: snapshot 1`] = `
+'
+Usage:   timeslip auth login
+Version: 0.1.0              
+
+Description:
+
+  Store credentials for a Harvest account
+
+Options:
+
+  -h, --help                - Show this help.                                                                  
+  -j, --json                - Output structured JSON instead of tables                                         
+  -r, --robot               - Output headerless tab-separated values                                           
+  --token        <token>    - Harvest Personal Access Token                                                    
+  --token-stdin             - Read token from stdin                                                            
+  --token-env    <var>      - Read token from the named environment variable                                   
+  --account-id   <id>       - Harvest Account ID (inferred from PAT prefix when possible)                      
+  --account      <account>  - Profile name for this account                                                    
+  --name         <name>     - Profile name for this account                                (Default: [32m"default"[39m)
+  --overwrite               - Overwrite an existing profile with the same name                                 
+
+'
+`;
+
+snapshot[`auth login --robot: snapshot 1`] = `
+"default	harvest	123456	42	jane@example.com
+"
+`;
+
+snapshot[`auth whoami --robot: snapshot 1`] = `
+"default	harvest	123456	true	42	Jane	Doe	jane@example.com
+"
+`;

@@ -1,0 +1,50 @@
+export const snapshot = {};
+
+snapshot[`project --help: snapshot 1`] = `
+"
+Usage:   timeslip project
+Version: 0.1.0           
+
+Description:
+
+  List and inspect projects
+
+Options:
+
+  -h, --help             - Show this help.                           
+  -a, --account  <name>  - Use a specific stored account             
+  -j, --json             - Output structured JSON instead of tables  
+  -r, --robot            - Output headerless tab-separated values    
+
+Commands:
+
+  list  - List assigned projects and tasks
+
+"
+`;
+
+snapshot[`project list --help: snapshot 1`] = `
+"
+Usage:   timeslip project list
+Version: 0.1.0                
+
+Description:
+
+  List assigned projects and tasks
+
+Options:
+
+  -h, --help             - Show this help.                           
+  -a, --account  <name>  - Use a specific stored account             
+  -j, --json             - Output structured JSON instead of tables  
+  -r, --robot            - Output headerless tab-separated values    
+  --limit        <n>     - Maximum projects to return                
+  --page-size    <n>     - Projects per API page                     
+
+"
+`;
+
+snapshot[`project list --robot: snapshot 1`] = `
+"100	Project 100	P100	true	10	Acme Corp	1001:Task for P100:true
+"
+`;

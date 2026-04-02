@@ -1,0 +1,34 @@
+export const snapshot = {};
+
+snapshot[`AUTH_MUTATION_FIELDS: snapshot 1`] = `
+"default	harvest	999999	7	test@example.com
+"
+`;
+
+snapshot[`AUTH_LIST_FIELDS: snapshot 1`] = `
+"default	harvest	123	42	jane@example.com	true
+other	harvest	456	99	john@example.com	false
+"
+`;
+
+snapshot[`AUTH_WHOAMI_FIELDS: snapshot 1`] = `
+"default	harvest	123456	true	42	Jane	Doe	jane@example.com
+"
+`;
+
+snapshot[`ENTRY_FIELDS: snapshot 1`] = `
+"99999	2026-01-15	1	1	Writing tests	false	true	true	500	Test Project	600	QA	50	Test Client
+"
+`;
+
+snapshot[`PROJECT_FIELDS: snapshot 1`] = `
+"100	Timeslip	TS	true	10	Acme Corp	200:Development:true
+101	Other		false	20	Globex	
+"
+`;
+
+snapshot[`CLIENT_FIELDS: snapshot 1`] = `
+"10	Acme Corp	100:Web:W
+20	Globex	200:API:API,201:Mobile:
+"
+`;
