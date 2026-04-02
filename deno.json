@@ -28,7 +28,11 @@
   "fmt": {
     "proseWrap": "never",
     "semiColons": false,
-    "exclude": ["src/providers/harvest/generated/"]
+    "exclude": [
+      "src/providers/harvest/generated/",
+      ".github/workflows/release.yml",
+      ".github/build-setup.yml"
+    ]
   },
   "lint": {
     "exclude": ["src/providers/harvest/generated/"]
