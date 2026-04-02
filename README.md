@@ -108,7 +108,7 @@ timeslip entry list --robot               # headerless tab-separated values
 ## environment variables
 
 | Variable           | Description                                      |
-|--------------------|--------------------------------------------------|
+| ------------------ | ------------------------------------------------ |
 | `TIMESLIP_ACCOUNT` | Default account name (overridden by `--account`) |
 | `TIMESLIP_DEBUG=1` | Show stack traces and request details            |
 
