@@ -136,10 +136,15 @@ export class HarvestClient {
     },
   ): Promise<RawResponse> {
     const url = this.#validateAbsoluteUrl(absoluteUrl)
-    const response = await this.#doFetch(options?.method ?? "GET", url, undefined, {
-      headers: options?.headers,
-      rawBody: options?.rawBody,
-    })
+    const response = await this.#doFetch(
+      options?.method ?? "GET",
+      url,
+      undefined,
+      {
+        headers: options?.headers,
+        rawBody: options?.rawBody,
+      },
+    )
     return HarvestClient.#toRawResponse(response)
   }
 

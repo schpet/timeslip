@@ -15,6 +15,7 @@
     "validate": "deno task check && deno fmt && deno lint"
   },
   "imports": {
+    "openapi-typescript": "npm:openapi-typescript@7",
     "@cliffy/command": "jsr:@cliffy/command@^1.0.0-rc.8",
     "@cliffy/testing": "jsr:@cliffy/testing@^1.0.0-rc.8",
     "@std/assert": "jsr:@std/assert@1",

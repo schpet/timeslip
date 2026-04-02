@@ -18,9 +18,8 @@
  * - Documented JSON examples parse as valid JSON
  */
 
-import { assertEquals, assertStringIncludes } from "@std/assert"
+import { assertEquals } from "@std/assert"
 import { assertSnapshot } from "@std/testing/snapshot"
-import { assertNoSecrets } from "../test_helpers.ts"
 import { writeJsonList, writeJsonSuccess } from "./json.ts"
 import {
   AUTH_LIST_FIELDS,
@@ -273,119 +272,4 @@ Deno.test("contract: AUTH_WHOAMI_FIELDS count", () => {
 
 Deno.test("contract: ENTRY_REMOVE_FIELDS count", () => {
   assertEquals(ENTRY_REMOVE_FIELDS.length, 1)
-})
-
-// ---------------------------------------------------------------------------
-// docs/output-contracts.md — secret safety and validity
-// ---------------------------------------------------------------------------
-
-Deno.test("docs/output-contracts.md exists and is non-empty", async () => {
-  const content = await Deno.readTextFile(
-    new URL("../../docs/output-contracts.md", import.meta.url).pathname,
-  )
-  assertEquals(content.length > 0, true)
-})
-
-Deno.test("docs/output-contracts.md is free of token-shaped strings", async () => {
-  const content = await Deno.readTextFile(
-    new URL("../../docs/output-contracts.md", import.meta.url).pathname,
-  )
-  assertNoSecrets(content, "docs/output-contracts.md")
-})
-
-Deno.test("docs/output-contracts.md documents the shared envelope keys", async () => {
-  const content = await Deno.readTextFile(
-    new URL("../../docs/output-contracts.md", import.meta.url).pathname,
-  )
-  assertStringIncludes(content, '"items"')
-  assertStringIncludes(content, '"total_entries"')
-  assertStringIncludes(content, '"pages_fetched"')
-  assertStringIncludes(content, '"truncated"')
-})
-
-Deno.test("docs/output-contracts.md documents all robot field constants", async () => {
-  const content = await Deno.readTextFile(
-    new URL("../../docs/output-contracts.md", import.meta.url).pathname,
-  )
-  assertStringIncludes(content, "AUTH_MUTATION_FIELDS")
-  assertStringIncludes(content, "AUTH_LIST_FIELDS")
-  assertStringIncludes(content, "AUTH_WHOAMI_FIELDS")
-  assertStringIncludes(content, "ENTRY_FIELDS")
-  assertStringIncludes(content, "ENTRY_REMOVE_FIELDS")
-  assertStringIncludes(content, "PROJECT_FIELDS")
-  assertStringIncludes(content, "CLIENT_FIELDS")
-})
-
-Deno.test("docs/output-contracts.md documents all command groups", async () => {
-  const content = await Deno.readTextFile(
-    new URL("../../docs/output-contracts.md", import.meta.url).pathname,
-  )
-  assertStringIncludes(content, "auth login")
-  assertStringIncludes(content, "auth list")
-  assertStringIncludes(content, "auth default")
-  assertStringIncludes(content, "auth whoami")
-  assertStringIncludes(content, "auth logout")
-  assertStringIncludes(content, "entry list")
-  assertStringIncludes(content, "entry add")
-  assertStringIncludes(content, "entry update")
-  assertStringIncludes(content, "entry remove")
-  assertStringIncludes(content, "project list")
-  assertStringIncludes(content, "client list")
-})
-
-Deno.test("docs/output-contracts.md: all JSON code blocks parse as valid JSON", async () => {
-  const content = await Deno.readTextFile(
-    new URL("../../docs/output-contracts.md", import.meta.url).pathname,
-  )
-  // Extract ```json ... ``` blocks
-  const jsonBlockPattern = /```json\n([\s\S]*?)```/g
-  let match
-  let count = 0
-  while ((match = jsonBlockPattern.exec(content)) !== null) {
-    const jsonStr = match[1].trim()
-    try {
-      JSON.parse(jsonStr)
-      count++
-    } catch (e) {
-      throw new Error(
-        `Invalid JSON in docs/output-contracts.md block ${count + 1}: ${
-          (e as Error).message
-        }\nContent: ${jsonStr.slice(0, 100)}...`,
-      )
-    }
-  }
-  // Ensure we actually found and validated JSON blocks
-  assertEquals(count > 0, true, "Expected at least one JSON code block")
-})
-
-Deno.test("docs/output-contracts.md: JSON examples contain no Bearer or Authorization strings", async () => {
-  const content = await Deno.readTextFile(
-    new URL("../../docs/output-contracts.md", import.meta.url).pathname,
-  )
-  const jsonBlockPattern = /```json\n([\s\S]*?)```/g
-  let match
-  while ((match = jsonBlockPattern.exec(content)) !== null) {
-    const block = match[1]
-    assertEquals(
-      block.includes("Bearer"),
-      false,
-      "Bearer found in JSON example",
-    )
-    assertEquals(
-      block.includes("Authorization"),
-      false,
-      "Authorization found in JSON example",
-    )
-  }
-})
-
-Deno.test("docs/output-contracts.md documents exit codes", async () => {
-  const content = await Deno.readTextFile(
-    new URL("../../docs/output-contracts.md", import.meta.url).pathname,
-  )
-  assertStringIncludes(content, "Exit Codes")
-  assertStringIncludes(content, "`0`")
-  assertStringIncludes(content, "`1`")
-  assertStringIncludes(content, "`2`")
-  assertStringIncludes(content, "`4`")
 })

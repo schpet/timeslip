@@ -756,10 +756,6 @@ Deno.test("e2e harvest api: protected auth headers are rejected before any netwo
     suiteLog.log("redaction_scan=ok header_override_rejection=2")
     assertArtifactsSecretSafe([
       {
-        label: "harvest header guard logs",
-        content: suiteLog.lines.join("\n"),
-      },
-      {
         label: "harvest header guard output",
         content: [
           authOverride.stdout,

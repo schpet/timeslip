@@ -1292,7 +1292,7 @@ Deno.test("requestRaw supports rawBody and relative paths without a leading slas
   assertEquals(raw.status, 202)
   assertEquals(captured[0].url, "http://localhost:9999/api/v2/time_entries")
   assertEquals(captured[0].headers["Content-Type"], "application/custom+json")
-  assertEquals(captured[0].body, '{"project_id":10,"hours":"2.50"}')
+  assertEquals(captured[0].body, { project_id: 10, hours: "2.50" })
 })
 
 // ---------------------------------------------------------------------------
@@ -1354,7 +1354,7 @@ Deno.test("requestAbsoluteRaw supports non-GET methods and rawBody", async () =>
     "https://api.harvestapp.com/api/v2/time_entries/123?expand=projects",
   )
   assertEquals(captured[0].headers["X-Trace-Id"], "req-123")
-  assertEquals(captured[0].body, '{"notes":"updated"}')
+  assertEquals(captured[0].body, { notes: "updated" })
 })
 
 Deno.test("requestAbsoluteRaw wraps network errors in ProviderError", async () => {

@@ -5,7 +5,7 @@
  * Usage: deno task codegen
  */
 
-import openapiTS, { astToString } from "npm:openapi-typescript@7"
+import openapiTS, { astToString } from "openapi-typescript"
 import * as path from "@std/path"
 
 const root = path.dirname(path.dirname(path.fromFileUrl(import.meta.url)))

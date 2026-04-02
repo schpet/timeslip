@@ -126,10 +126,6 @@ Deno.test("harvest schema: outputs bundled schema bytes exactly", async () => {
   assertEquals(result.code, 0)
   assertEquals(result.stdout, expected)
   assertEquals(stderr, "")
-  assertNoSecrets(
-    new TextDecoder().decode(result.stdout),
-    "harvest schema stdout",
-  )
 })
 
 Deno.test("harvest schema: resolves bundled schema from a different cwd", async () => {

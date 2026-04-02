@@ -8,7 +8,6 @@ import {
   ProviderError,
   ValidationError,
 } from "./mod.ts"
-import { captureStderr } from "../test_helpers.ts"
 
 // ---------------------------------------------------------------------------
 // ExitCode constants

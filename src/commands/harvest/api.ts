@@ -306,7 +306,7 @@ export async function buildApiRequest(
   }
 
   // 6. Build query params or body depending on method
-  let queryParams: Record<string, string> = {}
+  const queryParams: Record<string, string> = {}
   let body: string | undefined
 
   if (inputFile !== undefined) {
@@ -497,6 +497,7 @@ export async function executeApiRequest(
         method: request.method,
         params,
         headers: request.headers,
+        rawBody: request.body,
       })
     }
 
@@ -520,7 +521,7 @@ export async function executeApiRequest(
  * Send the initial request using the raw transport, dispatching to the
  * correct client method based on endpoint form.
  */
-async function sendRequest(
+function sendRequest(
   client: HarvestClient,
   request: ApiRequest,
 ): Promise<RawResponse> {

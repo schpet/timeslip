@@ -8,12 +8,7 @@
  * - Secret redaction: tokens never appear in output
  */
 
-import {
-  assertEquals,
-  assertRejects,
-  assertStringIncludes,
-  assertThrows,
-} from "@std/assert"
+import { assertEquals, assertStringIncludes, assertThrows } from "@std/assert"
 import { inferAccountId, resolveToken } from "./login.ts"
 import { ValidationError } from "../../errors/mod.ts"
 import { assertNoSecrets } from "../../test_helpers.ts"

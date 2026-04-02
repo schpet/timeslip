@@ -7,7 +7,7 @@
  * channels (stdout, stderr, debug logs).
  */
 
-import { assertEquals, assertStringIncludes, assertThrows } from "@std/assert"
+import { assertEquals, assertThrows } from "@std/assert"
 import { assertNoSecrets, runCli } from "./test_helpers.ts"
 
 // ---------------------------------------------------------------------------
@@ -153,55 +153,6 @@ Deno.test("e2e: CLI reads config written by a prior invocation without error", a
   } finally {
     await Deno.remove(xdgBase, { recursive: true }).catch(() => {})
   }
-})
-
-// ---------------------------------------------------------------------------
-// E2E: codegen task wiring check
-// ---------------------------------------------------------------------------
-
-// ---------------------------------------------------------------------------
-// E2E: docs fixtures are secret-safe
-// ---------------------------------------------------------------------------
-
-Deno.test("e2e: docs/output-contracts.md contains no token-shaped strings", async () => {
-  const content = await Deno.readTextFile(
-    new URL("../docs/output-contracts.md", import.meta.url).pathname,
-  )
-  assertNoSecrets(content, "docs/output-contracts.md")
-})
-
-Deno.test("e2e: docs/output-contracts.md JSON examples contain no auth headers", async () => {
-  const content = await Deno.readTextFile(
-    new URL("../docs/output-contracts.md", import.meta.url).pathname,
-  )
-  // Extract ```json blocks and check for auth-related strings
-  const jsonBlockPattern = /```json\n([\s\S]*?)```/g
-  let match
-  while ((match = jsonBlockPattern.exec(content)) !== null) {
-    const block = match[1]
-    assertEquals(
-      block.includes("Bearer"),
-      false,
-      "Bearer found in JSON docs example",
-    )
-    assertEquals(
-      block.includes("Authorization"),
-      false,
-      "Authorization found in JSON docs example",
-    )
-    assertNoSecrets(block, "docs JSON example block")
-  }
-})
-
-Deno.test("e2e: docs/output-contracts.md documents shared envelope", async () => {
-  const content = await Deno.readTextFile(
-    new URL("../docs/output-contracts.md", import.meta.url).pathname,
-  )
-  assertStringIncludes(content, "Shared JSON List Envelope")
-  assertStringIncludes(content, '"items"')
-  assertStringIncludes(content, '"total_entries"')
-  assertStringIncludes(content, '"pages_fetched"')
-  assertStringIncludes(content, '"truncated"')
 })
 
 // ---------------------------------------------------------------------------

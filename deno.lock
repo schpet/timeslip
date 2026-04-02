@@ -264,7 +264,8 @@
       "jsr:@std/fmt@1",
       "jsr:@std/path@^1.0.8",
       "jsr:@std/testing@1",
-      "jsr:@std/toml@^1.0.2"
+      "jsr:@std/toml@^1.0.2",
+      "npm:openapi-typescript@7"
     ]
   }
 }

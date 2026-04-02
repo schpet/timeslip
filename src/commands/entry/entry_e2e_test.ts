@@ -545,7 +545,7 @@ Deno.test("e2e entry list: walks 3 pages, returns all entries with correct JSON 
 
   const server = Deno.serve(
     { port: 0, hostname: "127.0.0.1", onListen: () => {} },
-    async (req: Request) => {
+    (req: Request) => {
       const headers: Record<string, string> = {}
       req.headers.forEach((v, k) => {
         headers[k] = v
@@ -694,7 +694,7 @@ Deno.test("e2e entry list: --limit truncates multi-page results with correct met
 
   const server = Deno.serve(
     { port: 0, hostname: "127.0.0.1", onListen: () => {} },
-    async (req: Request) => {
+    (req: Request) => {
       const url = new URL(req.url)
       const page = parseInt(url.searchParams.get("page") ?? "1")
       const start = (page - 1) * 5
@@ -766,7 +766,7 @@ Deno.test("e2e entry list: debug mode shows pagination progress without leaking 
 
   const server = Deno.serve(
     { port: 0, hostname: "127.0.0.1", onListen: () => {} },
-    async (req: Request) => {
+    (req: Request) => {
       const url = new URL(req.url)
       const page = parseInt(url.searchParams.get("page") ?? "1")
       const start = (page - 1) * 3

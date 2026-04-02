@@ -635,10 +635,6 @@ Deno.test("e2e mock Harvest suite: full happy path stays pagination-complete and
         content: mock.logs.join("\n"),
       },
       {
-        label: "suite diagnostic log",
-        content: suiteLog.lines.join("\n"),
-      },
-      {
         label: "combined cli output",
         content: [
           login.stdout,

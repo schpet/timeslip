@@ -683,19 +683,19 @@ function makeQueuedRawClient(
 
   return {
     calls,
-    async requestRaw(
+    requestRaw(
       path: string,
       options?: Parameters<HarvestClient["requestRaw"]>[1],
     ) {
       calls.push({ kind: "relative", path, options })
-      return nextResponse()
+      return Promise.resolve(nextResponse())
     },
-    async requestAbsoluteRaw(
+    requestAbsoluteRaw(
       url: string,
       options?: Parameters<HarvestClient["requestAbsoluteRaw"]>[1],
     ) {
       calls.push({ kind: "absolute", url, options })
-      return nextResponse()
+      return Promise.resolve(nextResponse())
     },
   } as HarvestClient & {
     calls: typeof calls
